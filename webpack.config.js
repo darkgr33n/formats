@@ -18,8 +18,21 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             use: ["babel-loader"]
+          },
+          {
+            // Exposes jQuery for use outside Webpack build
+            test: require.resolve('jquery'),
+            use: [{
+                loader: 'expose-loader',
+                options: 'jQuery'
+            }, {
+                loader: 'expose-loader',
+                options: '$'
+            }]
           }
         ]
+    }, externals: {
+      jquery: 'jQuery'
     },
     plugins: [
         new HtmlWebpackPlugin({

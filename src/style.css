@@ -1,23 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800;900&display=swap');
 body {
-    color: orange;
+  font-family: "Monserrat", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #111;
+  color: #fff;
 }
 
-$mainBlue: #00ff00;
+@keyframes fade-in {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
 
-.large-hero {
-    h2 {
-        color: $mainBlue;
+main {
+  width: 100%;
+}
+img {
+  display: block;
+  width: 100%;
+  margin-bottom:1px;
+}
+.content_container {   
+    @media screen and (min-width: 800px) {
+        padding: 0 60px 0 75px;
     }
 }
+.section_row {
+    display: flex;
+    flex-direction: column;
+  margin-top:50px;
 
-.box1 {
-    width: 50px;
-    height: 50px;
-    background-color: blue;
-    margin-bottom: 16px;
+    @media screen and (min-width: 800px) {
+        flex-direction: row;
+    }
+
+    .section_images {
+        flex-shrink: 0;
+        
+        @media screen and (min-width: 800px) {
+            margin: 0;
+            width: 55%;
+            flex-basis: 55%;
+            padding-right: 15px;
+        }
+    }
+    
+    &.pinned_row {
+        .section_text {
+            
+            .text_wrapper {
+                opacity: 0;
+                visibility: hidden;
+            }
+            
+            &.active {
+                .text_wrapper {
+                    opacity: 0;
+                    animation-name: fade-in;
+                    animation-duration: .4s;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
+    }
+    
+    .section_text {
+        flex-shrink: 0;
+        align-self: flex-start; 
+        padding: 30px 15px;
+        z-index: 2;
+        
+        @media screen and (min-width: 800px) {
+            width: 45%; 
+            flex-basis: 45%;
+            padding-top: 0;
+          
+           .text_wrapper {
+             padding-top: 30px;
+          }
+        }
+        
+      h1 {
+        margin: 0 0 30px;
+      }
   }
-  .box2 {
-    width: 50px;
-    height: 50px;
-    background-color: red;
+}
+#last_row {
+    position: relative;
+    z-index: 3;
+  
+    @media screen and (min-width: 800px) {
+        margin-top: 100px;
+        background-color: #fff;
+        box-shadow: 0px -30px 30px 50px rgba(255, 255, 255, 1);
+    }
+    
+    .text_wrapper {
+        opacity: 0; 
+        
+        @media screen and (min-width: 800px) {
+            opacity: 1;
+        }
+    }
   }
+footer {
+  position: relative;
+  z-index: 4;
+  margin-top: 50px;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #444d84;
+}
+
+
+/* VID BITS */
+
+.video-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.layer-content {
+  font-size: 3em;
+  text-align: center;
+  color: #f4f4f4;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   background: rgba(0, 0, 0, 0.3);
+ visibility:hidden;
+}
+
+.layer-content p{
+  position: relative;
+  padding: 5px 10px;
+  letter-spacing: -0.1em;
+  z-index: 3;
+    font-family: "Monserrat", sans-serif;
+  font-size:120px;
+    font-weight: 700;
+    font-style: normal;
+  text-align: left;
+  
+}
+
+/* CARO */
+.demoWrapper {
+  width: 100%;
+  height: 400px;
+  -webkit-font-smoothing: antialiased;
+  margin: auto;
+  background-color: #111;
+}
+
+.stage {
+  position: relative;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  height: 370px;
+  color: #ddd;
+  font-family: Arial, Helvetica, Verdana;
+}
+
+.box {
+  position: absolute;
+  display: inline-block;
+  perspective: 0;
+  transform-style: preserve-3d;
+  width: 300px;
+  height: 300px;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto; 
+}
+
+.box img {
+  width: 300px;
+  height: auto;
+  outline: 0 solid transparent;
+}
